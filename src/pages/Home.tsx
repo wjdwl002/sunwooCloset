@@ -1,9 +1,10 @@
+import Header from "@/components/Header";
 import Loading from "@/components/Loading";
 import react, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 
 const Home = () => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         setTimeout(()=> {
@@ -12,7 +13,7 @@ const Home = () => {
     }, [])
     
     return (<MainDiv>
-    {isLoading? <Loading/>: <div>hi</div>}
+    {isLoading? <Loading/>: (<><Header/><div>hi</div></>)}
     </MainDiv>)
 }
 
