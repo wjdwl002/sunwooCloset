@@ -15,5 +15,6 @@ w-full h-[60px]
 bg-primary
 flex items-center
 px-[15px] 
-font-bold
+font-bold text-base-100
+shadow-xl
 `

@@ -26,7 +26,8 @@ bg-white
 
 const MobileDiv = tw.div`
 w-1/2 min-w-[400px] max-w-[600px] h-full
-bg-base-100
+bg-[#fffff9] shadow-2xl 
+
 `
 
 export default App;
