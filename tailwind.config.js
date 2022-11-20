@@ -1,7 +1,7 @@
 module.exports = {
   content: ["index.html", "./src/**/*.{js,jsx,ts,tsx,vue,html}"],
   daisyui: {
-    themes: [
+    themes: ["cupcake", "pastel", "garden",
       {
         dark: {
           ...require("daisyui/src/colors/themes")["[data-theme=dark]"],

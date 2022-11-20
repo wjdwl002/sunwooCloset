@@ -5,21 +5,28 @@ import styled from "styled-components";
 import AppRouter from "@/components/_router/router";
 /* context */
 import { useTheme } from "@/context/ThemeContext";
+import tw from "tailwind-styled-components";
 
 function App() {
-  const { themeColorset } = useTheme();
 
   return (
-    <MainDiv theme={themeColorset}>
-      <AppRouter />
+    <MainDiv>
+      <MobileDiv> 
+        <AppRouter />
+      </MobileDiv>
     </MainDiv>
   );
 }
 
-const MainDiv = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: ${(props) => props.theme.baseColor};
+const MainDiv = tw.div`
+w-full h-full
+flex justify-center
+bg-white
 `;
+
+const MobileDiv = tw.div`
+w-1/2 min-w-[400px] max-w-[600px] h-full
+bg-base-100
+`
 
 export default App;
