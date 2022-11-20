@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css");
-@import url(codeMirror.scss);
 
 // 색상 변수
 $point-color: #00adb5;
@@ -106,11 +105,5 @@ button.styled {
     &:before {
       width: 100%;
     }
-  }
-}
-
-#home-lottie-player {
-  a {
-    display: none;
   }
 }
