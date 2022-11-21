@@ -2,28 +2,17 @@ import Header from "@/components/Header";
 import Loading from "@/components/Loading";
 import MyCloset from "@/components/MyCloset";
 import InputBox from "@/components/_styled/Input";
+import axios from "axios";
 import react, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 
 const Home = () => {
-    const [isLoading, setIsLoading] = useState(false);
     const [input, setInput] = useState("");
 
-    useEffect(() => {
-        setTimeout(()=> {
-            setIsLoading(false);
-        }, 2000)
-    }, [])
     
     return (<MainDiv>
-    {isLoading? <Loading/>: (
-        <>
-            <Header/>
-            <Input type="text" placeholder="원하는 스타일을 검색하세요" />
-            <MyCloset/>
-        </>
-        )
-    }
+        <Input type="text" placeholder="원하는 스타일을 검색하세요" />
+        <MyCloset/>
     </MainDiv>)
 }
 

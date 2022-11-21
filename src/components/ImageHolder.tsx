@@ -1,9 +1,9 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-const ImgHolder = ({src}:{src:string}) => {
+const ImgHolder = ({src, onClick}:{src:string; onClick: Function}) => {
 
-    return <Img src={src}></Img>
+    return <Img onClick={onClick} src={src}></Img>
 }
 
 export default ImgHolder;

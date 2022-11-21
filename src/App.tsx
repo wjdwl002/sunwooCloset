@@ -6,12 +6,23 @@ import AppRouter from "@/components/_router/router";
 /* context */
 import { useTheme } from "@/context/ThemeContext";
 import tw from "tailwind-styled-components";
+import Header from "@/components/Header";
+import Loading from "@/components/Loading";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(()=> {
+        setIsLoading(false);
+    }, 2000)
+  }, [])
 
   return (
     <MainDiv>
       <MobileDiv> 
+        {isLoading ? <Loading/> : <Header/>}
         <AppRouter />
       </MobileDiv>
     </MainDiv>
