@@ -10,9 +10,10 @@ const MyCloset = () => {
 
     useEffect(() => {
         axios.get("http://ec2-3-101-101-80.us-west-1.compute.amazonaws.com:8080/app").then((res)=> {
-            setClothesList(res.data["User_content"])
+            console.log(res.data["User_content"]);
             
-        })
+            setClothesList(res.data["User_content"])
+        })        
     }, [])
     
     return (<MainDiv>
@@ -20,7 +21,7 @@ const MyCloset = () => {
         <ClosetDiv>
             {clothesList.map((e, idx)=> 
             <ImgHolder 
-                src={e?.photo | ""} 
+                src={e.photo} 
                 onClick={()=> {navigate(`/closet/${e?.idx}`)}}
                 key={idx}
             />)}

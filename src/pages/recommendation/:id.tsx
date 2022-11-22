@@ -4,40 +4,34 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useRoutes } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
-const Closet = () => {
+const Recommendation = ({data}:{data:Object;}) => {
     const location = useLocation();
     const navigate = useNavigate();
 
     const [clothesInfo, setClothesInfo] = useState(null);
-    const [recommendedList, setRecommendedList] = useState(Array.from({length: 10}, ()=> {}))
 
     useEffect(()=> {
         const id = location.pathname.split("/")[2];
-
-        axios.get(`http://ec2-3-101-101-80.us-west-1.compute.amazonaws.com:8080/app/${id}`).then((res)=> {
-            setClothesInfo(res.data?.["prev_content"]);
-            setRecommendedList(res.data?.["User_content"]);
-        })
+        console.log(id);
+        
+        axios.get(`http://ec2-3-101-101-80.us-west-1.compute.amazonaws.com:8000/app/recommendation/${id}`)
+            .then((res)=> {
+                console.log(res.data);  
+            })
     }, [])
     return <MainDiv>
-        <TitleDiv>옷 정보</TitleDiv>
-        <FlexDiv>
-            <Img src={clothesInfo?.photo} />
-            {clothesInfo?.name | "name"}
-        </FlexDiv>
-
         <TitleDiv className="mt-[30px]">추천 스타일</TitleDiv>
-        <PhotoList>
-            {recommendedList.map((e, idx)=> <ImgHolder src={e?.idx} key={idx} style={{"margin": "0 10px"}} onClick={()=> navigate(`/recommendation/${location.pathname.split("/")[2]}`)}/>)}
-        </PhotoList>
+        <ImgHolder style={{"width": "90%", "height": "60%", "margin": "0"}} src={""}/>
+        <button style={{"margin-top": "20px"}}className="btn">사이트 바로가기</button>
     </MainDiv>
 }
 
-export default Closet;
+export default Recommendation;
 
 const MainDiv = tw.div`
-w-full
+w-full h-full 
 p-[20px]
+flex flex-col justify-start items-center
 `
 
 const TitleDiv = tw.div`
