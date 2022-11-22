@@ -9,26 +9,30 @@ const Closet = () => {
     const navigate = useNavigate();
 
     const [clothesInfo, setClothesInfo] = useState(null);
-    const [recommendedList, setRecommendedList] = useState(Array.from({length: 10}, ()=> {}))
+    const [recommendedList, setRecommendedList] = useState([]);
 
     useEffect(()=> {
         const id = location.pathname.split("/")[2];
 
         axios.get(`http://ec2-3-101-101-80.us-west-1.compute.amazonaws.com:8080/app/${id}`).then((res)=> {
-            setClothesInfo(res.data?.["prev_content"]);
+            
+        console.log(res.data?.["prev_content"]);
+                
             setRecommendedList(res.data?.["User_content"]);
+            setClothesInfo(res.data?.["prev_content"]);
+            console.log(clothesInfo);
         })
     }, [])
+
     return <MainDiv>
         <TitleDiv>옷 정보</TitleDiv>
         <FlexDiv>
-            <Img src={clothesInfo?.photo} />
-            {clothesInfo?.name | "name"}
+            <ImgHolder style={{width: "fit-content", margin: "0" }} src={clothesInfo?.["photo:"]} />
         </FlexDiv>
 
         <TitleDiv className="mt-[30px]">추천 스타일</TitleDiv>
         <PhotoList>
-            {recommendedList.map((e, idx)=> <ImgHolder src={e?.idx} key={idx} style={{"margin": "0 10px"}} onClick={()=> navigate(`/recommendation/${location.pathname.split("/")[2]}`)}/>)}
+            {recommendedList.map((e, idx)=> <ImgHolder src={e?.photo} key={idx} style={{"margin": "0 10px"}} onClick={()=> navigate(`/recommendation/${location.pathname.split("/")[2]}`)}/>)}
         </PhotoList>
     </MainDiv>
 }

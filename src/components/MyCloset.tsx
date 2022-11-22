@@ -5,7 +5,7 @@ import tw from "tailwind-styled-components";
 import ImgHolder from "./ImageHolder";
 
 const MyCloset = () => {
-    const [clothesList, setClothesList] = useState(Array.from({length: 10}, ()=> {}));
+    const [clothesList, setClothesList] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,12 +19,15 @@ const MyCloset = () => {
     return (<MainDiv>
         <TitleDiv>My Closet</TitleDiv>
         <ClosetDiv>
-            {clothesList.map((e, idx)=> 
+            {clothesList.map((e, idx)=>
+            <div>
             <ImgHolder 
-                src={e.photo} 
+                src={e?.photo} 
                 onClick={()=> {navigate(`/closet/${e?.idx}`)}}
                 key={idx}
-            />)}
+            />
+            <TextHolder>{e.name}</TextHolder>
+            </div> )}
         </ClosetDiv>
     </MainDiv>)
 }
@@ -40,6 +43,12 @@ font-bold
 
 const TitleDiv = tw.div`
 py-[10px] text-[16px]
+`
+
+const TextHolder = tw.div`
+font-semibold text-[12px] text-center
+whitespace-pre-wrap
+mt-[5px]
 `
 
 const ClosetDiv = tw.div`

@@ -7,7 +7,7 @@ const Loading = () => {
 
     return (<MainDiv>
         <TitleDiv>
-            Sunwoo's Closet
+            sunwu's Closet
         </TitleDiv>
         <StickLoader/>
     </MainDiv>)

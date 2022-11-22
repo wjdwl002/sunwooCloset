@@ -22,7 +22,7 @@ const Recommendation = ({data}:{data:Object;}) => {
     return <MainDiv>
         <TitleDiv className="mt-[30px]">추천 스타일</TitleDiv>
         <ImgHolder style={{"width": "90%", "height": "60%", "margin": "0"}} src={""}/>
-        <button style={{"margin-top": "20px"}}className="btn">사이트 바로가기</button>
+        <button style={{marginTop: "20px"}}className="btn">사이트 바로가기</button>
     </MainDiv>
 }
 

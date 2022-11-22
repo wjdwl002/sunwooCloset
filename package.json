@@ -1,8 +1,8 @@
 {
-  "name": "sunwoo-closet",
+  "name": "sunwu-closet",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/wjdwl002/sunwooCloset.git",
+  "repository": "https://github.com/wjdwl002/sunwuCloset.git",
   "author": "wjdwl002 <wjdwl001@khu.ac.kr>",
   "license": "MIT",
   "scripts": {
