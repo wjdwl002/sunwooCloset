@@ -9,7 +9,6 @@ import tw from "tailwind-styled-components";
 const Home = () => {
     const [input, setInput] = useState("");
 
-    
     return (<MainDiv>
         <Input type="text" placeholder="원하는 스타일을 검색하세요" />
         <MyCloset/>

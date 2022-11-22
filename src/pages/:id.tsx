@@ -1,7 +1,9 @@
 import ImgHolder from "@/components/ImageHolder";
+import { recommendedStyleList } from "@/store/style";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useRoutes } from "react-router-dom";
+import { Navigate, useLocation, useNavigate, useRoutes } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import tw from "tailwind-styled-components";
 
 const Closet = () => {
@@ -9,14 +11,13 @@ const Closet = () => {
     const navigate = useNavigate();
 
     const [clothesInfo, setClothesInfo] = useState(null);
-    const [recommendedList, setRecommendedList] = useState([]);
+    const [recommendedList, setRecommendedList] = useRecoilState(recommendedStyleList);
 
     useEffect(()=> {
         const id = location.pathname.split("/")[2];
 
         axios.get(`http://ec2-3-101-101-80.us-west-1.compute.amazonaws.com:8080/app/${id}`).then((res)=> {
             
-        console.log(res.data?.["prev_content"]);
                 
             setRecommendedList(res.data?.["User_content"]);
             setClothesInfo(res.data?.["prev_content"]);
@@ -32,7 +33,12 @@ const Closet = () => {
 
         <TitleDiv className="mt-[30px]">추천 스타일</TitleDiv>
         <PhotoList>
-            {recommendedList.map((e, idx)=> <ImgHolder src={e?.photo} key={idx} style={{"margin": "0 10px"}} onClick={()=> navigate(`/recommendation/${location.pathname.split("/")[2]}`)}/>)}
+            {recommendedList
+                .map((e, idx)=> 
+                <ImgHolder 
+                    src={e?.photo} 
+                    key={idx} style={{"margin": "0 10px"}} 
+                    onClick={()=> navigate(`/recommendation/${idx}`)}/>)}
         </PhotoList>
     </MainDiv>
 }

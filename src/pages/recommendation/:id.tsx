@@ -1,28 +1,28 @@
 import ImgHolder from "@/components/ImageHolder";
-import axios from "axios";
+import { recommendedStyleList } from "@/store/style";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useRoutes } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
 import tw from "tailwind-styled-components";
 
 const Recommendation = ({data}:{data:Object;}) => {
     const location = useLocation();
     const navigate = useNavigate();
-
     const [clothesInfo, setClothesInfo] = useState(null);
+    const [styleList] = useRecoilState(recommendedStyleList);
 
     useEffect(()=> {
         const id = location.pathname.split("/")[2];
-        console.log(id);
+        console.log(styleList);
         
-        axios.get(`http://ec2-3-101-101-80.us-west-1.compute.amazonaws.com:8000/app/recommendation/${id}`)
-            .then((res)=> {
-                console.log(res.data);  
-            })
+        setClothesInfo(styleList[id]);
     }, [])
     return <MainDiv>
         <TitleDiv className="mt-[30px]">추천 스타일</TitleDiv>
-        <ImgHolder style={{"width": "90%", "height": "60%", "margin": "0"}} src={""}/>
-        <button style={{marginTop: "20px"}}className="btn">사이트 바로가기</button>
+        <ImgHolder style={{"width": "90%", "height": "60%", "margin": "0"}} src={clothesInfo?.photo}/>
+        <button style={{marginTop: "20px"}}className="btn">
+            <a href={clothesInfo?.idx}>사이트 바로가기
+                </a></button>
     </MainDiv>
 }
 
