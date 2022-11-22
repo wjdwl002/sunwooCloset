@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 const Header = () => {
-
+    
     return (<MainDiv>
         <h1>sunwu's Closet</h1>
     </MainDiv>)
