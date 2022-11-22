@@ -38,6 +38,7 @@ bg-white
 const MobileDiv = tw.div`
 w-1/2 min-w-[400px] max-w-[600px] h-full
 bg-[#fffff9] shadow-2xl 
+overflow-y-hidden
 
 `
 
